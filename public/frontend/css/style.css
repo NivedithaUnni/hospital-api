@@ -1,142 +1,174 @@
-/* ===== GLOBAL ===== */
+/* ===== GOOGLE FONT STYLE ===== */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #eef1f5;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+    background: #f5f9fc;
     margin: 0;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background: #ffffff;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.navbar h1 {
+    color: #2c7be5;
+    font-size: 20px;
+}
+
+.navbar a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    color: #2c7be5;
 }
 
 /* ===== CONTAINER ===== */
 .container {
     width: 85%;
-    margin: 40px auto;
+    margin: 30px auto;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
 }
 
 /* ===== HEADINGS ===== */
 h2 {
-    color: #2c3e50;
+    color: #1e2a38;
     margin-bottom: 20px;
-}
-
-/* ===== CARD STYLE ===== */
-.container {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 /* ===== BUTTONS ===== */
 .btn {
-    display: inline-block;
-    padding: 8px 14px;
-    background: #3498db;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #2c7be5, #4dabf7);
     color: white;
+    border: none;
+    border-radius: 8px;
     text-decoration: none;
-    border-radius: 6px;
     font-size: 14px;
+    cursor: pointer;
     transition: 0.3s;
 }
 
 .btn:hover {
-    background: #2980b9;
+    opacity: 0.9;
 }
 
 .btn-danger {
-    background: #e74c3c;
+    background: #ff5c5c;
 }
 
-.btn-danger:hover {
-    background: #c0392b;
+.btn-secondary {
+    background: #6c757d;
 }
 
 /* ===== TABLE ===== */
 table {
     width: 100%;
     border-collapse: collapse;
-    background: #fff;
     margin-top: 15px;
-    border-radius: 8px;
-    overflow: hidden;
 }
 
 th {
-    background: #3498db;
+    background: #2c7be5;
     color: white;
-    text-align: left;
-}
-
-th, td {
     padding: 12px;
-    border-bottom: 1px solid #ddd;
+    text-align: left;
+    font-size: 14px;
 }
 
-/* ===== TABLE HOVER ===== */
+td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
 tr:hover {
-    background: #f2f6fc;
+    background: #f2f7ff;
 }
 
-/* ===== FORM INPUTS ===== */
+/* ===== FORM ===== */
+form {
+    max-width: 500px;
+}
+
 input, select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    outline: none;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
     font-size: 14px;
 }
 
 input:focus, select:focus {
-    border-color: #3498db;
+    border-color: #2c7be5;
+    outline: none;
 }
 
 /* ===== LABEL ===== */
 label {
     font-weight: 600;
-    color: #555;
+    color: #444;
 }
 
-/* ===== STATUS COLORS ===== */
-.status {
+/* ===== STATUS BADGES ===== */
+.badge {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
     font-weight: bold;
 }
 
-.status.scheduled {
-    color: orange;
+.badge.scheduled {
+    background: #fff3cd;
+    color: #856404;
 }
 
-.status.completed {
-    color: green;
+.badge.completed {
+    background: #d4edda;
+    color: #155724;
 }
 
-.status.cancelled {
-    color: red;
+.badge.cancelled {
+    background: #f8d7da;
+    color: #721c24;
 }
 
-/* ===== SPACING ===== */
-form {
-    max-width: 500px;
-}
-
-button {
-    border: none;
-    cursor: pointer;
-}
-
-/* Footer */
+/* ===== FOOTER ===== */
 .footer {
     margin-top: 40px;
-    background: #2c3e50;
-    color: #fff;
-    padding: 15px 0;
+    padding: 15px;
     text-align: center;
-    border-top: 3px solid #3498db;
+    background: #ffffff;
+    border-top: 1px solid #eee;
+    color: #888;
 }
 
-.footer-container {
-    width: 85%;
-    margin: auto;
+.card {
+    flex: 1;
+    min-width: 220px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    text-align: center;
 }
 
-.footer p {
-    margin: 5px 0;
+canvas {
+    max-height: 300px;
 }
