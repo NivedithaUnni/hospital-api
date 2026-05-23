@@ -10,7 +10,7 @@ class AppointmentController
     }
 
     // =========================
-    // ✅ CREATE APPOINTMENT
+    // ✅ CREATE APPOINTMENT (WITH SLOT CHECK)
     // =========================
     public function create($request, $response)
     {
@@ -41,9 +41,25 @@ class AppointmentController
                             ->withHeader('Content-Type', 'application/json');
         }
 
-        // ✅ Insert with default status
+        // 🚨 CHECK SLOT ALREADY BOOKED
+        $checkSlot = $pdo->prepare("
+            SELECT id FROM appointments 
+            WHERE appointment_date = ?
+        ");
+        $checkSlot->execute([$appointment_date]);
+
+        if ($checkSlot->fetch()) {
+            $response->getBody()->write(json_encode([
+                "error" => "Slot already booked"
+            ]));
+            return $response->withStatus(400)
+                            ->withHeader('Content-Type', 'application/json');
+        }
+
+        // ✅ INSERT
         $stmt = $pdo->prepare("
-            INSERT INTO appointments (patient_id, doctor_id, appointment_date, status) 
+            INSERT INTO appointments 
+            (patient_id, doctor_id, appointment_date, status) 
             VALUES (?, ?, ?, ?)
         ");
 
@@ -55,7 +71,7 @@ class AppointmentController
         ]);
 
         $response->getBody()->write(json_encode([
-            "message" => "Appointment created"
+            "message" => "Appointment created successfully"
         ]));
 
         return $response->withHeader('Content-Type', 'application/json');
@@ -69,7 +85,7 @@ class AppointmentController
         $pdo = $this->container->get(PDO::class);
 
         $stmt = $pdo->query("
-            SELECT a.*, 
+            SELECT a.*,
                    p.name AS patient_name,
                    d.name AS doctor_name
             FROM appointments a
@@ -91,7 +107,7 @@ class AppointmentController
         $pdo = $this->container->get(PDO::class);
 
         $stmt = $pdo->prepare("
-            SELECT a.*, 
+            SELECT a.*,
                    p.name AS patient_name,
                    d.name AS doctor_name
             FROM appointments a
@@ -117,7 +133,7 @@ class AppointmentController
     }
 
     // =========================
-    // ✅ UPDATE APPOINTMENT
+    // ✅ UPDATE FULL APPOINTMENT
     // =========================
     public function update($request, $response, $args)
     {
@@ -127,7 +143,7 @@ class AppointmentController
         $patient_id = $data['patient_id'] ?? null;
         $doctor_id = $data['doctor_id'] ?? null;
         $appointment_date = $data['appointment_date'] ?? null;
-        $status = $data['status'] ?? 'Scheduled'; // ✅ Fix
+        $status = $data['status'] ?? 'Scheduled';
 
         if (!$patient_id || !$doctor_id || !$appointment_date) {
             $response->getBody()->write(json_encode([
@@ -152,14 +168,14 @@ class AppointmentController
         ]);
 
         $response->getBody()->write(json_encode([
-            "message" => "Appointment updated"
+            "message" => "Appointment updated successfully"
         ]));
 
         return $response->withHeader('Content-Type', 'application/json');
     }
 
     // =========================
-    // ✅ UPDATE STATUS ONLY
+    // ✅ UPDATE ONLY STATUS
     // =========================
     public function updateStatus($request, $response, $args)
     {
@@ -177,13 +193,15 @@ class AppointmentController
         }
 
         $stmt = $pdo->prepare("
-            UPDATE appointments SET status = ? WHERE id = ?
+            UPDATE appointments 
+            SET status = ?
+            WHERE id = ?
         ");
 
         $stmt->execute([$status, $args['id']]);
 
         $response->getBody()->write(json_encode([
-            "message" => "Status updated"
+            "message" => "Status updated successfully"
         ]));
 
         return $response->withHeader('Content-Type', 'application/json');
@@ -200,7 +218,7 @@ class AppointmentController
         $stmt->execute([$args['id']]);
 
         $response->getBody()->write(json_encode([
-            "message" => "Appointment deleted"
+            "message" => "Appointment deleted successfully"
         ]));
 
         return $response->withHeader('Content-Type', 'application/json');
