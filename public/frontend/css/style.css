@@ -1,0 +1,142 @@
+/* ===== GLOBAL ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #eef1f5;
+    margin: 0;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    width: 85%;
+    margin: 40px auto;
+}
+
+/* ===== HEADINGS ===== */
+h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* ===== CARD STYLE ===== */
+.container {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #2980b9;
+}
+
+.btn-danger {
+    background: #e74c3c;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-top: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    background: #3498db;
+    color: white;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* ===== TABLE HOVER ===== */
+tr:hover {
+    background: #f2f6fc;
+}
+
+/* ===== FORM INPUTS ===== */
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    border-color: #3498db;
+}
+
+/* ===== LABEL ===== */
+label {
+    font-weight: 600;
+    color: #555;
+}
+
+/* ===== STATUS COLORS ===== */
+.status {
+    font-weight: bold;
+}
+
+.status.scheduled {
+    color: orange;
+}
+
+.status.completed {
+    color: green;
+}
+
+.status.cancelled {
+    color: red;
+}
+
+/* ===== SPACING ===== */
+form {
+    max-width: 500px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    background: #2c3e50;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    border-top: 3px solid #3498db;
+}
+
+.footer-container {
+    width: 85%;
+    margin: auto;
+}
+
+.footer p {
+    margin: 5px 0;
+}
