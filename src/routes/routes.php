@@ -13,7 +13,7 @@ return function ($app) {
         $group->post('/login', 'AuthController:login');
     });
 
-    // 🔐 PROTECTED ROUTES
+    //  PROTECTED ROUTES
     $app->group('/api', function ($group) {
 
         $group->group('/patients', function ($group) {

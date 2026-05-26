@@ -9,9 +9,9 @@ class AppointmentController
         $this->container = $container;
     }
 
-    // =========================
+   
     //  CREATE APPOINTMENT (WITH SLOT CHECK)
-    // =========================
+    
     public function create($request, $response)
     {
         $pdo = $this->container->get(PDO::class);
@@ -29,7 +29,7 @@ class AppointmentController
                             ->withHeader('Content-Type', 'application/json');
         }
 
-        // ✅ Check patient exists
+        //  Check patient exists
         $check = $pdo->prepare("SELECT id FROM patients WHERE id=?");
         $check->execute([$patient_id]);
 
@@ -41,7 +41,7 @@ class AppointmentController
                             ->withHeader('Content-Type', 'application/json');
         }
 
-        // 🚨 CHECK SLOT ALREADY BOOKED
+        //  CHECK SLOT ALREADY BOOKED
         $checkSlot = $pdo->prepare("
             SELECT id FROM appointments 
             WHERE appointment_date = ?
@@ -56,7 +56,7 @@ class AppointmentController
                             ->withHeader('Content-Type', 'application/json');
         }
 
-        // ✅ INSERT
+        // INSERT
         $stmt = $pdo->prepare("
             INSERT INTO appointments 
             (patient_id, doctor_id, appointment_date, status) 
@@ -77,9 +77,9 @@ class AppointmentController
         return $response->withHeader('Content-Type', 'application/json');
     }
 
-    // =========================
+    
     //  GET ALL APPOINTMENTS
-    // =========================
+    
     public function getAll($request, $response)
     {
         $pdo = $this->container->get(PDO::class);
@@ -99,9 +99,9 @@ class AppointmentController
         return $response->withHeader('Content-Type', 'application/json');
     }
 
-    // =========================
+    
     // GET ONE APPOINTMENT
-    // =========================
+    
     public function getOne($request, $response, $args)
     {
         $pdo = $this->container->get(PDO::class);
@@ -132,9 +132,9 @@ class AppointmentController
         return $response->withHeader('Content-Type', 'application/json');
     }
 
-    // =========================
-    // ✅ UPDATE FULL APPOINTMENT
-    // =========================
+   
+    //  UPDATE FULL APPOINTMENT
+   
     public function update($request, $response, $args)
     {
         $pdo = $this->container->get(PDO::class);
@@ -174,9 +174,9 @@ class AppointmentController
         return $response->withHeader('Content-Type', 'application/json');
     }
 
-    // =========================
-    // ✅ UPDATE ONLY STATUS
-    // =========================
+    
+    //  UPDATE ONLY STATUS
+    
     public function updateStatus($request, $response, $args)
     {
         $pdo = $this->container->get(PDO::class);
@@ -207,9 +207,9 @@ class AppointmentController
         return $response->withHeader('Content-Type', 'application/json');
     }
 
-    // =========================
-    // ✅ DELETE APPOINTMENT
-    // =========================
+    
+    //  DELETE APPOINTMENT
+    
     public function delete($request, $response, $args)
     {
         $pdo = $this->container->get(PDO::class);
