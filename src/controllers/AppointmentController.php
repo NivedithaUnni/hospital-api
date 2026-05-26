@@ -10,7 +10,7 @@ class AppointmentController
     }
 
     // =========================
-    // ✅ CREATE APPOINTMENT (WITH SLOT CHECK)
+    //  CREATE APPOINTMENT (WITH SLOT CHECK)
     // =========================
     public function create($request, $response)
     {
@@ -78,7 +78,7 @@ class AppointmentController
     }
 
     // =========================
-    // ✅ GET ALL APPOINTMENTS
+    //  GET ALL APPOINTMENTS
     // =========================
     public function getAll($request, $response)
     {
@@ -100,7 +100,7 @@ class AppointmentController
     }
 
     // =========================
-    // ✅ GET ONE APPOINTMENT
+    // GET ONE APPOINTMENT
     // =========================
     public function getOne($request, $response, $args)
     {
